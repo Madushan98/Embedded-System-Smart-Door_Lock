@@ -145,7 +145,27 @@ unsigned char get_userInput(unsigned char* pass,int isPassword)
 		
 		if(key == 'D')
 		{
-			break;
+			if (cnt == 5)
+			{
+				break;
+			}else{
+				lcd_cursor_off();
+				lcd_clear();
+				lcd_print("Password or ID");
+				lcd_gotoxy(1,2);
+				lcd_print("length should 5");
+				_delay_ms(16000);
+				lcd_cursor_on();
+				lcd_clear();
+				if (isPassword)
+				{
+					lcd_print("Enter Password:");
+				}else{
+					lcd_print("Enter ID:");
+				}
+				lcd_gotoxy(1,2);
+				cnt = 0;
+			}
 		}
 		
 		else if(key == 'C' && cnt > 0)
